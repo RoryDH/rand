@@ -1,0 +1,18 @@
+{
+  "name": "rand",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "ruby main.rb"
+  },
+  "devDependencies": {
+    "gulp": "3.x",
+    "gulp-util": "2.x",
+    "gulp-rename": "0.x",
+    "gulp-concat": "2.x",
+    "gulp-coffeelint": "0.x",
+    "gulp-sass": "0.x",
+    "gulp-nodemon": "0.x",
+    "streamqueue": "0.x",
+    "gulp-coffee": "1.x"
+  }
+}
