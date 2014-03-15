@@ -1,3 +1,7 @@
 node_modules/*
 public/css/*
 public/js/*
+
+Gemfile.lock
+
+config/sess_secret.txt
