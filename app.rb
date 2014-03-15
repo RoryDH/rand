@@ -5,6 +5,7 @@ require 'time'
 # CONFIG
 set :public_folder, File.dirname(__FILE__) + '/public'
 helpers RH
+sess_secret = ENV['SESS_SECRET'] || "much1random2wow3"
 
 # HOOKS
 before do
