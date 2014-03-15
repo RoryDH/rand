@@ -1,4 +1,4 @@
-class Gen
+class User
   include NoBrainer::Document
   include NoBrainer::Document::Timestamps
   

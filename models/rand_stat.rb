@@ -4,7 +4,7 @@ class RandStat
   include NoBrainer::Document
   include NoBrainer::Document::Timestamps
 
-  belongs_to :gen
+  belongs_to :user
 
   field :num,      type: Integer
   field :ip,       type: String
