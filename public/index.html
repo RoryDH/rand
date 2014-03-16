@@ -2,11 +2,30 @@
 <html ng-app="rand">
 <head>
   <title>Randomenss</title>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.1/angular.min.js"></script>
 
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" type="text/css" href="/css/comp.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Mono|Cambo' rel='stylesheet' type='text/css'>
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.2/angular.min.js"></script>
   <script type="text/javascript" src="/js/comp.js"></script>
 </head>
 <body>
-  <h1>Random</h1>
+  <div class="container">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 current-page" ng-controller="MainCtrl">
+      <h1 class="cen">Random</h1>
+
+      <p>Be a random number generator...</p>
+
+      <div class="number-selection row">
+        <div class="col-sm-1"></div>
+        <div ng-repeat="n in numberOptions" ng-bind="n" class="number-opt col-sm-1"></div>
+      </div>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
 </body>
 </html>

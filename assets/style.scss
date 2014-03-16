@@ -1,3 +1,47 @@
+$gl: #bdffd1;
+$g: #65E080;
+$gm: #00C12B;
+$gd: #007D1C;
+
+$rl: #FF8073;
+$rm: #FF1800;
+$rd: #A61000;
+
 body {
-  color: red;
+  font-family: Cambo, Georgia, serif;
+  font-size: 14px;
+  color: #222222;
+  background-color: #ffffff;
+}
+
+code,
+kbd,
+pre,
+samp,
+.mono {
+  font-family: "PT Mono", monospace, monospace;
+  font-size: 1em;
+}
+
+.cen {
+  text-align: center;
+}
+
+// Random numbers
+.number-opt {
+  background-color: $gl;
+  padding: 6px 0;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  // border-right: solid 1px $gm;
+  // &:last-child {
+  //   border-right: none;
+  // }
+  &:hover {
+    background-color: $g;
+  }
+  &:active {
+    background-color: $gm;
+  }
 }

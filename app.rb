@@ -27,7 +27,7 @@ before do
     @u = User.create()
     session[:u] = @u.id
   end
-  puts "User id: ", @u.id
+  puts "User id: #{@u.id}"
 end
 
 # ROUTES

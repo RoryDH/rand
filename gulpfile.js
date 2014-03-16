@@ -15,6 +15,9 @@ var fileLocations = {
     "./assets/ng/controllers.coffee",
     "./assets/ng/directives.coffee"
   ],
+  frontLibs: [
+    "./assets/jslib/*"
+  ],
   cssLibs: ["./assets/csslib/*.css"]
 };
 
@@ -36,38 +39,23 @@ gulp.task('front-lint', function() {
     .pipe(coffeelint.reporter());
 });
 
-// var nodemonInstance;
-// Backend
-// gulp.task('back-lint', ['runApp'], function() {
-//   gulp.src(fileLocations.back)
-//     .pipe(jshint({expr: false}))
-//     .pipe(jshint.reporter(stylish));
-// });
-
 //Concat & Minify JS
-gulp.task('ng-concat', function() {
-  gulp.src(fileLocations.front)
-    .pipe(coffee({bare: true}).on('error', console.log))
-    .pipe(concat('comp.js'))
-    // .pipe(gulp.dest('./dist'))
-    // .pipe(rename('all.min.js'))
-    // .pipe(uglify())
+gulp.task('js-compile', function() {
+  var lib = gulp.src(fileLocations.frontLibs);
+  var cs = gulp.src(fileLocations.front)
+            .pipe(coffee({bare: true})
+            .on('error', console.log));
+  new StreamQueue({objectMode: true},
+    lib,
+    cs
+  ).pipe(concat('comp.js'))
     .pipe(gulp.dest('./public/js'));
 });
 
-// Nodemon
-// gulp.task('runApp', function() {
-//   nodemonInstance && nodemonInstance.emit('quit'); // restart node app
-//   nodemonInstance = nodemon({
-//     script: 'xtra.js',
-//     options: '--ignore *'
-//   });
-// });
-
 // Default
-gulp.task('default', ['front-lint', 'ng-concat', 'css'], function() {
+gulp.task('default', ['front-lint', 'js-compile', 'css'], function() {
   // Watch JS Files
-  gulp.watch(fileLocations.front, ['front-lint', 'ng-concat']);
+  gulp.watch(fileLocations.front, ['front-lint', 'js-compile']);
   // gulp.watch(fileLocations.back, ['back-lint']);
   gulp.watch("./assets/style.scss", ['css']);
 });
