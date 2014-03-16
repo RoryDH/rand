@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="rand">
 <head>
-  <title>Randomenss</title>
+  <title>Randomness</title>
 
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
@@ -12,20 +12,38 @@
   <script type="text/javascript" src="/js/comp.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="container" ng-controller="MainCtrl">
+    <p class="cen" ng-hide="js">Loading... (JavaScript must be enabled)</p>
     <div class="col-md-2"></div>
-    <div class="col-md-8 current-page" ng-controller="MainCtrl">
-      <h1 class="cen">Random</h1>
+    <div class="col-md-8 current-page" ng-show="js">
+      <h1 class="cen">Randomness</h1>
 
-      <p>Be a random number generator...</p>
-
-      <div class="number-selection row">
-        <div class="col-sm-1"></div>
-        <div ng-repeat="n in numberOptions" ng-bind="n" class="number-opt col-sm-1"></div>
+      <div ng-hide="hasChosen" class="cen">
+        <p>Be a random number generator...</p>
+        <h3 ng-hide="ready" class="not-ready">
+          Choose an arbitrary number from 0 to 9,
+          <span class="got-it blue-btn" ng-click="ready = true">Got it?</span>
+        </h3>
+        <div ng-show="ready" class="number-selection row mono">
+          <div class="col-xs-1 spacer-col"></div>
+          <div ng-repeat="n in numberOptions"
+               ng-bind="n" class="number-opt col-xs-1"
+               ng-click="choose(n)"></div>
+        </div>
       </div>
 
+      <div ng-show="hasChosen">
+        <h3 ng-show="hasChosen" class="cen">
+          Thank you. You helped <span></span>science<span ng-if="hasChosen"> by choosing the number {{chosen}}</span>!
+        </h3>
+        <div class="cen"><span class="blue-btn help-again" ng-click="again()">Help again?</span></div>
+        <p>Why?</p>
+      </div>
     </div>
     <div class="col-md-2"></div>
   </div>
+  <footer class="cen">
+    Created by <a href="https://twitter.com/RoryDHughes" target="_blank">Rory Hughes</a>
+  </footer>
 </body>
 </html>

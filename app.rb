@@ -19,21 +19,23 @@ before do
 
   if request.post?
     request.body.rewind
-    @rp = JSON.parse(request.body.read).symbolize_keys
+    b = request.body.read
+    @rp = b.size > 0 ? JSON.parse(b).symbolize_keys : {}
   end
 
-  @u = User.find(session[:u]) if session[:u]
-  unless @u
+  @u = User.find(session[:u]) if session[:u] #Find if there is a user_id stored in session
+  unless @u # If could not find user OR no session[:u] at all
     @u = User.create()
     session[:u] = @u.id
+    @new_user = true
   end
   puts "User id: #{@u.id}"
 end
 
 # ROUTES
-get '/' do
-  send_file File.join(settings.public_folder, 'index.html')
-end
+# get '/' do
+#   send_file File.join(settings.public_folder, 'index.html')
+# end
 
 post '/rs' do
   num = @rp[:num]
@@ -50,8 +52,15 @@ post '/rs' do
   if rs.save
     json(rs.for_api)
   else
+    status 400
     json(e rs.errors.full_messages)
   end
+end
+
+post '/u' do
+  h = @u.for_api
+  h[:new] = @new_user
+  json h
 end
 
 # ERRORS

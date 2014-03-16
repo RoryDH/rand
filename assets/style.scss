@@ -3,15 +3,18 @@ $g: #65E080;
 $gm: #00C12B;
 $gd: #007D1C;
 
-$rl: #FF8073;
-$rm: #FF1800;
-$rd: #A61000;
+$bl: #d3fdff;
+$bm: #9de9ff;
+$bd: #0032dd;
 
 body {
   font-family: Cambo, Georgia, serif;
   font-size: 14px;
   color: #222222;
   background-color: #ffffff;
+  > .container {
+    padding-bottom: 40px;
+  }
 }
 
 code,
@@ -27,10 +30,40 @@ samp,
   text-align: center;
 }
 
+.blue-btn {
+  cursor: pointer;
+  color: #0014cf;
+  padding: 3px;
+  border-radius: 3px;
+  background-color: $bl;
+  display: inline-block;
+  &:hover {
+    background-color: $bm;
+    text-decoration: underline;
+  }
+  &:active {
+    background-color: $bd;
+  }
+}
+
 // Random numbers
+@media (max-width: 500px) {
+  .number-selection {
+    .col-xs-1 {
+      width: 33.3333%;
+      &:last-child {
+        margin-left: 33.333%;
+      }
+    }
+    .spacer-col {
+      display: none;
+    }
+  }
+}
+
 .number-opt {
   background-color: $gl;
-  padding: 6px 0;
+  padding: 0.4em 0;
   font-size: 30px;
   cursor: pointer;
   text-align: center;
@@ -44,4 +77,23 @@ samp,
   &:active {
     background-color: $gm;
   }
+}
+
+.not-ready {
+  line-height: 1.5em;
+}
+
+.help-again {
+  font-size: 20px;
+}
+
+footer {
+  position: fixed;
+  padding: 4px 0;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: #fafaff;
+  border-top: solid 1px $bl;
+  color: #8dadc3;
 }
