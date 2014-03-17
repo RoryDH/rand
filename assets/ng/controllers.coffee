@@ -21,6 +21,7 @@ app.controller "MainCtrl", ($scope, $http, $analytics) ->
   $scope.choose = (n) ->
     $scope.chosen = n
     $scope.hasChosen = true
+    $scope.chosenOnce = true
     $http.post('/rs',
       num: n
       j_time: Date()

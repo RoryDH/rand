@@ -43,10 +43,32 @@
 
       <div ng-show="hasChosen">
         <h3 ng-show="hasChosen" class="cen">
-          Thank you. You helped <span></span>science<span ng-if="hasChosen"> by choosing the number {{chosen}}</span>!
+          Thank you. You helped science<span ng-if="hasChosen"> by choosing the number {{chosen}}</span>!
         </h3>
-        <div class="cen"><span class="blue-btn help-again" ng-click="start(true)">Help again?</span></div>
-        <p>Why?</p>
+        <div class="cen"><span class="blue-btn help-again" ng-click="start(true)">
+          Have you some more random?
+        </span></div>
+      </div>
+
+      <div ng-show="chosenOnce">
+        <h3>Why?</h3>
+        <p>
+          This is an experiment to visualize how well or how badly
+          <a href="https://en.wikipedia.org/wiki/Random_number_generation#By_humans" target="_blank">humans</a>
+          choose
+          <a href="https://en.wikipedia.org/wiki/Randomness" target="_blank">random</a>
+          numbers.
+          <br>
+          The only contribution from you the project needs is to keep clicking random numbers.
+        </p>
+        <h3>Where is the data?</h3>
+        <p>
+          Once the sample set is large enough, charts will appear on the site after you each random figure you submit.
+          <br>
+          Statistics about which numbers and when they were clicked will be displayed.
+          <br>
+          If you have any other questions email me: rory at roryhughes dot net
+        </p>
       </div>
     </div>
     <div class="col-md-2"></div>
