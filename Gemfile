@@ -15,4 +15,5 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-gulp'
   gem 'rvm1-capistrano3', require: false
+  gem 'capistrano-npm'
 end
