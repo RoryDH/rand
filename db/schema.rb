@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317083326) do
+ActiveRecord::Schema.define(version: 20140317141958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 20140317083326) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "user_agent"
+    t.integer  "list_index"
   end
 
+  add_index "rand_stats", ["list_index"], name: "index_rand_stats_on_list_index", using: :btree
   add_index "rand_stats", ["num"], name: "index_rand_stats_on_num", using: :btree
   add_index "rand_stats", ["user_id"], name: "index_rand_stats_on_user_id", using: :btree
 

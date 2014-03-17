@@ -51,6 +51,7 @@ end
 
 post '/rs' do
   num = @rp[:num]
+  ind = @rp[:ind]
 
   if @rp[:j_time]
     begin
@@ -63,6 +64,7 @@ post '/rs' do
   rs = RandStat.new(
     user: @u,
     num: num,
+    list_index: ind,
     ip: @client,
     j_time: @j_time,
     user_agent: @ua

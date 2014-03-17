@@ -38,7 +38,7 @@
           <div class="col-xs-1 spacer-col"></div>
           <div ng-repeat="n in numberOptions"
                ng-bind="n" class="number-opt col-xs-1"
-               ng-click="choose(n)"></div>
+               ng-click="choose(n, $index)"></div>
         </div>
       </div>
 

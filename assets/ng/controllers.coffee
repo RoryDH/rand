@@ -19,13 +19,14 @@ app.controller "MainCtrl", ($scope, $http, $analytics) ->
   ).error((data, status, headers, config) ->
   )
 
-  $scope.choose = (n) ->
+  $scope.choose = (n, i) ->
     $scope.chosen = n
     $scope.hasChosen = true
     $scope.chosenOnce = true
     $http.post('/rs',
       num: n
       j_time: Date()
+      ind: i
     ).success((data, status, headers, config) ->
     ).error((data, status, headers, config) ->
     )
