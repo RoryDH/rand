@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'nobrainer'
+gem 'sinatra-activerecord'
+gem 'activerecord'
+gem "rake"
+gem "pg"
 gem 'puma'
 gem 'sinatra-contrib'
 gem 'json'

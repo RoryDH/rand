@@ -1,14 +1,7 @@
 require 'resolv'
 
-class RandStat
-  include NoBrainer::Document
-  include NoBrainer::Document::Timestamps
-
+class RandStat < ActiveRecord::Base
   belongs_to :user
-
-  field :num,      type: Integer
-  field :ip,       type: String
-  field :j_time,   type: Time
   
   validates :num, presence: true
   validates :num, inclusion: { in: (0..9), message: "can only be from 0 to 9" }
