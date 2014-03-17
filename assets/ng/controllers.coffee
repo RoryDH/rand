@@ -1,5 +1,10 @@
 app.controller "MainCtrl", ($scope, $http) ->
-  $scope.numberOptions = shuffle(range(0, 9))
+  $scope.start = ->
+    $scope.hasChosen = false
+    $scope.chosen = null
+    $scope.numberOptions = shuffle(range(0, 9))
+
+  $scope.start()
 
   $http.post('/u', null)
   .success((data, status, headers, config) ->
@@ -19,8 +24,3 @@ app.controller "MainCtrl", ($scope, $http) ->
       $scope.js = true
     ).error((data, status, headers, config) ->
     )
-
-  $scope.again = ->
-    $scope.hasChosen = false
-    $scope.chosen = null
-

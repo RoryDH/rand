@@ -52,8 +52,10 @@ gulp.task('js-compile', function() {
     .pipe(gulp.dest('./public/js'));
 });
 
+gulp.task('compile', ['js-compile', 'css']);
+
 // Default
-gulp.task('default', ['front-lint', 'js-compile', 'css'], function() {
+gulp.task('default', ['front-lint', 'compile'], function() {
   // Watch JS Files
   gulp.watch(fileLocations.front, ['front-lint', 'js-compile']);
   // gulp.watch(fileLocations.back, ['back-lint']);
