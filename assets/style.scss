@@ -90,6 +90,9 @@ samp,
 .about {
   margin-top: 20px;
   border-top: solid 1px $bm;
+  .mail-button {
+    border: 0px;
+  }
 }
 
 footer {
