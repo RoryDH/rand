@@ -33,6 +33,7 @@
           Choose an arbitrary number from 0 to 9,
           <span class="got-it blue-btn" ng-click="gotIt()">Got it?</span>
         </h3>
+        <h3 ng-show="ready && (u.new && !chosenOnce)">Press it.</h3>
         <div ng-show="ready" class="number-selection row mono">
           <div class="col-xs-1 spacer-col"></div>
           <div ng-repeat="n in numberOptions"
@@ -46,7 +47,7 @@
           Thank you. You helped science<span ng-if="hasChosen"> by choosing the number {{chosen}}</span>!
         </h3>
         <div class="cen"><span class="blue-btn help-again" ng-click="start(true)">
-          Have you some more random?
+          Have you got some more random?
         </span></div>
       </div>
 

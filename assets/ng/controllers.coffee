@@ -13,6 +13,7 @@ app.controller "MainCtrl", ($scope, $http, $analytics) ->
 
   $http.post('/u', null)
   .success((data, status, headers, config) ->
+    $scope.u = data
     $scope.ready = !data.new
     $scope.js = true
   ).error((data, status, headers, config) ->
@@ -26,8 +27,6 @@ app.controller "MainCtrl", ($scope, $http, $analytics) ->
       num: n
       j_time: Date()
     ).success((data, status, headers, config) ->
-      $scope.ready = !data.new
-      $scope.js = true
     ).error((data, status, headers, config) ->
     )
     $analytics.eventTrack('choose_number', { category: 'science' })
