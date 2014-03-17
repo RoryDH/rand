@@ -61,4 +61,15 @@ namespace :deploy do
   #   end
   # end
 
+  desc 'Runs rake db:migrate if migrations are set'
+  task :rand_migrate do
+    on roles(:web) do
+      within release_path do
+        execute :rake, "db:migrate"
+      end
+    end
+  end
+
+  after :updated, :rand_migrate
+
 end
