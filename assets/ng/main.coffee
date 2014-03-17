@@ -18,4 +18,4 @@ shuffle = (array) ->
   array
 
 # NG
-app = angular.module('rand', [])
+app = angular.module('rand', ['angulartics', 'angulartics.google.analytics'])
