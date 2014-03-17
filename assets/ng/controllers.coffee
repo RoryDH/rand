@@ -1,15 +1,15 @@
 app.controller "MainCtrl", ($scope, $http, $analytics) ->
-  $scope.reStart = ->
+  $scope.start = (restart) ->
     $scope.hasChosen = false
     $scope.chosen = null
     $scope.numberOptions = shuffle(range(0, 9))
-    $analytics.eventTrack('restart', {  category: 'science' });
+    $analytics.eventTrack('restart', { category: 'science' }) if restart
 
   $scope.gotIt = ->
     $scope.ready = true
-    $analytics.eventTrack('got_it', {  category: 'science' });
+    $analytics.eventTrack('got_it', { category: 'science' })
 
-  $scope.reStart()
+  $scope.start()
 
   $http.post('/u', null)
   .success((data, status, headers, config) ->
@@ -29,4 +29,4 @@ app.controller "MainCtrl", ($scope, $http, $analytics) ->
       $scope.js = true
     ).error((data, status, headers, config) ->
     )
-    $analytics.eventTrack('choose_number', {  category: 'science' });
+    $analytics.eventTrack('choose_number', { category: 'science' })
