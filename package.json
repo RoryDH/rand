@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ruby main.rb"
   },
-  "devDependencies": {
+  "dependencies": {
     "gulp": "3.x",
     "gulp-util": "2.x",
     "gulp-rename": "0.x",

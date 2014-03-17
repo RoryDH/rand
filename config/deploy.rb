@@ -39,7 +39,7 @@ set :bundle_dir, "/usr/local/rvm/gems/ruby-2.1.0"
 set :rvm1_ruby_version, "2.1.0"
 
 namespace :deploy do
-  before :updated, 'gulp'
+  after 'npm:install', 'gulp'
 
   desc 'Restart application'
   task :restart do

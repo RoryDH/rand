@@ -7,7 +7,7 @@ require 'rvm1/capistrano3'
 require 'capistrano/bundler' # Rails needs Bundler, right?
 # require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
-require 'capistrano-npm'
+require 'capistrano/npm'
 require 'capistrano/gulp'
 
 # Includes tasks from other gems included in your Gemfile
