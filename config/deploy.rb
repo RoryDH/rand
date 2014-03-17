@@ -63,9 +63,13 @@ namespace :deploy do
 
   desc 'Runs rake db:migrate if migrations are set'
   task :rand_migrate do
-    on roles(:web) do
+    on roles(:app) do
       within release_path do
-        execute :rake, "db:migrate"
+        with rack_env: :production do
+          # commands in this block execute with the environment
+          # variable RAILS_ENV=production
+          rake   "db:migrate"
+        end
       end
     end
   end
