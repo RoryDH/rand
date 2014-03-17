@@ -34,6 +34,8 @@ before do
     @new_user = true
   end
   puts "User id: #{@u.id}"
+
+  @ua = request.user_agent
 end
 
 # ROUTES
@@ -52,7 +54,13 @@ post '/rs' do
     end
   end
 
-  rs = RandStat.new(user: @u, num: num, ip: @client, j_time: @j_time)
+  rs = RandStat.new(
+    user: @u,
+    num: num,
+    ip: @client,
+    j_time: @j_time,
+    user_agent: @ua
+  )
   if rs.save
     json(rs.for_api)
   else
