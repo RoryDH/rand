@@ -94,11 +94,19 @@ samp,
 
 footer {
   position: fixed;
-  padding: 4px 0;
+  padding: 0px 0;
   bottom: 0px;
   left: 0px;
   right: 0px;
   background-color: #fafaff;
   border-top: solid 1px $bl;
   color: #8dadc3;
+  > .me {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 3px;
+    > a {
+      vertical-align: top;
+    }
+  }
 }
