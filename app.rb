@@ -32,7 +32,8 @@ before do
     @rp = b.size > 0 ? JSON.parse(b).symbolize_keys : {}
   end
 
-  @u = User.find(session[:u]) if session[:u] #Find if there is a user_id stored in session
+  uid = session[:u].to_i
+  @u = User.find_by_id(uid) if uid != 0 #Find if there is a user_id stored in session
   unless @u # If could not find user OR no session[:u] at all
     @u = User.create()
     session[:u] = @u.id
