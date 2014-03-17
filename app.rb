@@ -12,7 +12,12 @@ helpers RH
 sess_secret = ENV['SESS_SECRET'] || "much1random2wow3"
 
 set :session_secret, sess_secret
-set :public_folder, File.dirname(__FILE__) + '/public'
+
+if Sinatra::Base.development?
+  set :public_folder, File.dirname(__FILE__) + '/public'
+else
+  set :static, false
+end
 
 enable :sessions
 enable :logging
