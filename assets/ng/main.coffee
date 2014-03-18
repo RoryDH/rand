@@ -18,4 +18,17 @@ shuffle = (array) ->
   array
 
 # NG
-app = angular.module('rand', ['angulartics', 'angulartics.google.analytics'])
+app = angular.module('rand', ['ngRoute', 'angulartics', 'angulartics.google.analytics'])
+
+app.config(($routeProvider) ->
+  $routeProvider.when('/', {
+    templateUrl: 'home',
+    controller: 'MainCtrl'
+  }).when('/results', {
+    templateUrl: 'results',
+    controller: 'ResultsCtrl'
+  }).otherwise({
+    controller: 'NotFoundCtrl',
+    templateUrl: 'notFound'
+  })
+)

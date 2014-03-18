@@ -9,6 +9,7 @@
   <link href='http://fonts.googleapis.com/css?family=PT+Mono|Cambo' rel='stylesheet' type='text/css'>
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.2/angular.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.2/angular-route.min.js"></script>
   <script type="text/javascript" src="/js/comp.js"></script>
 
   <script>
@@ -24,71 +25,7 @@
   <div class="container" ng-controller="MainCtrl">
     <div class="col-md-2"></div>
     <div class="col-md-8 current-page" ng-show="js">
-      <div ng-show="hasChosen" class="cen"><span class="blue-btn help-again" ng-click="start(true)">
-        Have you got some more random?
-      </span></div>
-      <h1 class="cen">Randomness</h1>
-
-      <div ng-hide="hasChosen" class="cen">
-        <p>Be a random number generator...</p>
-        <h3 ng-hide="ready" class="not-ready">
-          Choose an arbitrary number from 0 to 9,
-          <span class="got-it blue-btn" ng-click="gotIt()">Got it?</span>
-        </h3>
-        <h3 ng-show="ready && (u.new && !chosenOnce)">Press it.</h3>
-        <div ng-show="ready" class="number-selection row mono">
-          <div class="col-xs-1 spacer-col"></div>
-          <div ng-repeat="n in numberOptions"
-               ng-bind="n" class="number-opt col-xs-1"
-               ng-click="choose(n, $index)"></div>
-        </div>
-      </div>
-
-      <h3 ng-show="hasChosen" class="cen">
-        Thanks. You helped science<span ng-if="hasChosen"> by choosing the number {{chosen}}</span>!
-      </h3>
-
-      <div class="about" ng-show="chosenOnce">
-        <h3>Why?</h3>
-        <p>
-          This is an experiment to visualize how well or how badly
-          <a href="https://en.wikipedia.org/wiki/Random_number_generation#By_humans" target="_blank">humans</a>
-          choose
-          <a href="https://en.wikipedia.org/wiki/Randomness" target="_blank">random</a>
-          numbers.
-          <br>
-          The only contribution from you the project needs is to keep clicking random numbers.
-        </p>
-        <h3>Where is the data?</h3>
-        <p>
-          Once the sample set is large enough, charts will appear on the site after you each random figure you submit.
-          <br>
-          Statistics about which numbers and when people clicked them will be displayed.
-          <br>
-          If you have any other questions email me:
-          rory <small>at</small> roryhughes <small>dot</small> net
-        </p>
-
-        <h3>Get notified when the data is out:</h3>
-        <!-- Begin MailChimp Signup Form -->
-        <div id="mc_embed_signup">
-          <form action="http://roryhughes.us3.list-manage1.com/subscribe/post?u=bd25fa274d7254a6013b73c70&amp;id=3fd47228b6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-            
-            <div class="mc-field-group">
-              <label for="mce-EMAIL">Email Address </label>
-              <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-            </div>
-            <div id="mce-responses" class="clear">
-              <div class="response" id="mce-error-response" style="display:none"></div>
-              <div class="response" id="mce-success-response" style="display:none"></div>
-            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-            <div style="position: absolute; left: -5000px;"><input type="text" name="b_bd25fa274d7254a6013b73c70_3fd47228b6" value=""></div>
-            <div class="clear"><input type="submit" value="Notify me" name="subscribe" id="mc-embedded-subscribe" class="button mail-button blue-btn"></div>
-          </form>
-        </div>
-        <!--End mc_embed_signup-->
-
-      </div>
+      <ng-view></ng-view>
     </div>
     <div class="col-md-2"></div>
     <p class="cen" ng-hide="js">Loading... (JavaScript must be enabled)</p>
@@ -101,5 +38,80 @@
     <a href="https://twitter.com/RoryDHughes" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @twitterapi</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </footer>
+
+  <script type="text/ng-template" id="home">
+    <div ng-show="ready && !hasChosen" class="number-selection row mono">
+      <div class="col-xs-1 spacer-col"></div>
+      <div ng-repeat="n in numberOptions"
+           ng-bind="n" class="number-opt col-xs-1"
+           ng-click="choose(n, $index)"></div>
+    </div>
+    <h1 class="cen">Randomness</h1>
+
+    <div ng-hide="hasChosen" class="cen">
+      <p>Be a random number generator...</p>
+      <h3 ng-hide="ready" class="not-ready">
+        Choose an arbitrary number from 0 to 9,
+        <span class="got-it blue-btn" ng-click="gotIt()">Got it?</span>
+      </h3>
+      <h3 ng-show="ready && (u.new && !chosenOnce)">Press it.</h3>
+    </div>
+
+    <div ng-show="hasChosen" class="cen">
+      <h3 class="cen">
+        Thanks. You helped science<span ng-if="hasChosen"> by choosing the number {{chosen}}</span>!
+      </h3>
+      <span class="blue-btn help-again" ng-click="start(true)">
+        Have you got some more random?
+      </span>
+    </div>
+
+    <div class="about" ng-show="chosenOnce">
+      <h3>Why?</h3>
+      <p>
+        This is an experiment to visualize how well or how badly
+        <a href="https://en.wikipedia.org/wiki/Random_number_generation#By_humans" target="_blank">humans</a>
+        choose
+        <a href="https://en.wikipedia.org/wiki/Randomness" target="_blank">random</a>
+        numbers.
+        <br>
+        The only contribution from you the project needs is to keep clicking random numbers.
+      </p>
+      <h3>Where is the data?</h3>
+      <p>
+        Once the sample set is large enough, charts will appear on the site after you each random figure you submit.
+        <br>
+        Statistics about which numbers and when people clicked them will be displayed.
+        <br>
+        If you have any other questions email me:
+        rory <small>at</small> roryhughes <small>dot</small> net
+      </p>
+
+      <h3>Get notified when the data is out:</h3>
+      <!-- Begin MailChimp Signup Form -->
+      <div id="mc_embed_signup">
+        <form action="http://roryhughes.us3.list-manage1.com/subscribe/post?u=bd25fa274d7254a6013b73c70&amp;id=3fd47228b6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          
+          <div class="mc-field-group">
+            <label for="mce-EMAIL">Email Address </label>
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+          </div>
+          <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+          </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;"><input type="text" name="b_bd25fa274d7254a6013b73c70_3fd47228b6" value=""></div>
+          <div class="clear"><input type="submit" value="Notify me" name="subscribe" id="mc-embedded-subscribe" class="button mail-button blue-btn"></div>
+        </form>
+      </div>
+      <!--End mc_embed_signup-->
+
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="not-found">
+    <h2>Not Found</h2>
+    <h3 class="cen"><a href="/#/">Home</a></h3>
+  </script>
 </body>
 </html>
