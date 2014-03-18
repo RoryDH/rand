@@ -85,6 +85,9 @@ samp,
 
 .help-again {
   font-size: 20px;
+  border-radius: 0 0 3px 3px;
+  border: solid 2px $bd;
+  border-top: none;
 }
 
 .about {
